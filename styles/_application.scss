@@ -273,9 +273,10 @@ h1, h2, h3, h4 {
    Modify as content requires.
    ========================================================================== */
 
-@media only screen and (min-width: 35em) {
+@media only screen and (min-width: #{map-get($map__breakpoint-sizes, 'small')}) {
   /* Style adjustments for viewports that meet the condition */
 }
+
 
 @media print,
 (-o-min-device-pixel-ratio: 5/4),
@@ -284,7 +285,7 @@ h1, h2, h3, h4 {
   /* Style adjustments for high resolution devices */
 }
 
-@media screen and (min-width: 1480px) {
+@media screen and (min-width: #{map-get($map__breakpoint-sizes, 'x-large')}) {
   html {
     font-size: 100%; // scale up from default
   }

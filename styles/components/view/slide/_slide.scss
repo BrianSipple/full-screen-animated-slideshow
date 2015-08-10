@@ -32,13 +32,30 @@
     }
     
     .slide__title {
-        font-size: 2.4rem;
+        margin-bottom: 0.5rem;
+        line-height: 1em;
     }
     
     .slide__description {
         font-size: 1.4rem;
         color: $font-color__button--white-on-dark-background;
         margin: 0;
+    }
+        
+    
+    
+    /////////////////// Base Component Media Queries /////////////////////
+    @media only screen and (min-width: #{map-get($map__breakpoint-sizes, 'small')}) {        
+        .slide__title {
+            margin-bottom: 1rem;    
+        }
+    }
+
+    /////////////////// Base Component Media Queries /////////////////////
+    @media only screen and (min-width: 56em) {        
+        .slide__title {
+            margin-bottom: 1rem;    
+        }
     }
             
 }

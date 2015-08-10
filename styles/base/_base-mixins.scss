@@ -27,13 +27,15 @@
  * dynamically create media queries
  * ----------------------------------------------------------------------------------------------------*/
 $map__breakpoint-sizes: (
-    small: 480px,
-    medium: 740px,
-    medium-large: 800px,
-    large: 1024px,
-    db-widgets: 1100px,
-    x-large: 1200px
+    x-small: 30em,
+    small: 35em,
+    medium: 46.25em,
+    medium-large: 50em,
+    large: 64em,
+    db-widgets: 68.75em,
+    x-large: 92.5em
 );
+
 
 /* ----------------------------------------------------------------------------------------------------
  * Maps for use in our font-size mixin
@@ -52,10 +54,12 @@ $map__font-sizes--p: (
 $map__font-sizes--h1: (
     
     /* (font-size, line-height) **Currently using line-height multiplier of 1.25** */
-    null: (2.8rem, 3.5rem),   
+    null: (1.8rem, 2.25rem),   
+    x-small: (2.2rem, 2.75rem),   
     small: (3.1rem, 3.875rem),
     medium: (3.3rem, 4.125rem),
-    large: (3.6rem, 4.5rem)
+    medium-large: (3.6rem, 4.5rem),
+    large: (4.0rem, 5.0rem)
 );
 
 $map__font-sizes--h2: (
@@ -80,7 +84,7 @@ $map__font-sizes--h2: (
              * $breakpoint-sizes, use the value to
              * create a media query using the breakpoint */
             @if map_has_key($breakpoint-sizes, $breakpoint-size) {
-                $breakpoint-size: map_get($breakpoint-sizes, $breakpoint-size);
+                $breakpoint-size: map-get($breakpoint-sizes, $breakpoint-size);
             }
             /* If the $font-size is NOT in the $breakpoint-sizes map,
              * we assume it's a literal value. This way, each map can mix and match

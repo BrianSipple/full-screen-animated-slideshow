@@ -194,7 +194,7 @@
   min-width: 100%;
   max-width: 100%; }
 
-@media screen and (min-width: 1200px) {
+@media screen and (min-width: 92.5em) {
   .menu {
     padding-bottom: 6em; }
   .menu.menu--genres {
@@ -435,12 +435,21 @@
   z-index: 2; }
 
 .slide .slide__title {
-  font-size: 2.4rem; }
+  margin-bottom: 0.5rem;
+  line-height: 1em; }
 
 .slide .slide__description {
   font-size: 1.4rem;
   color: rgba(255, 255, 255, 0.7);
   margin: 0; }
+
+@media only screen and (min-width: 35em) {
+  .slide .slide__title {
+    margin-bottom: 1rem; } }
+
+@media only screen and (min-width: 56em) {
+  .slide .slide__title {
+    margin-bottom: 1rem; } }
 
 .panel {
   display: flex;
@@ -468,7 +477,7 @@
   max-height: 100%;
   flex: 1; }
 
-@media screen and (max-width: 740px) {
+@media screen and (max-width: 46.25em) {
   .panel {
     flex-direction: column;
     flex-wrap: wrap; } }
@@ -519,7 +528,7 @@
   font-style: italic;
   color: rgba(255, 255, 255, 0.7); }
 
-@media screen and (max-width: 740px) {
+@media screen and (max-width: 46.25em) {
   .subtitle {
     font-size: 1.6rem; } }
 
@@ -816,11 +825,11 @@ p, ul, ol {
              * keys and values as needed
              */ }
 
-@media screen and (min-width: 480px) {
+@media screen and (min-width: 35em) {
   p, ul, ol {
     font-size: 1.6rem; } }
 
-@media screen and (min-width: 740px) {
+@media screen and (min-width: 46.25em) {
   p, ul, ol {
     font-size: 1.7rem;
     line-height: 2.3799rem; } }
@@ -829,7 +838,7 @@ p, ul, ol {
   p, ul, ol {
     font-size: 1.8rem; } }
 
-@media screen and (min-width: 1024px) {
+@media screen and (min-width: 64em) {
   p, ul, ol {
     font-size: 1.9rem;
     line-height: 2.755rem; } }
@@ -839,8 +848,22 @@ p, ul, ol {
     font-size: 2rem; } }
 
 h1 {
-  font-size: 2.8rem;
-  line-height: 3.5rem;
+  font-size: 1.8rem;
+  line-height: 2.25rem;
+  /* If $font-size is a key that exists in
+             * $breakpoint-sizes, use the value to
+             * create a media query using the breakpoint */
+  /* If the $font-size is NOT in the $breakpoint-sizes map,
+             * we assume it's a literal value. This way, each map can mix and match
+             * keys and values as needed
+             */
+  /* If $font-size is a key that exists in
+             * $breakpoint-sizes, use the value to
+             * create a media query using the breakpoint */
+  /* If the $font-size is NOT in the $breakpoint-sizes map,
+             * we assume it's a literal value. This way, each map can mix and match
+             * keys and values as needed
+             */
   /* If $font-size is a key that exists in
              * $breakpoint-sizes, use the value to
              * create a media query using the breakpoint */
@@ -863,20 +886,30 @@ h1 {
              * keys and values as needed
              */ }
 
-@media screen and (min-width: 480px) {
+@media screen and (min-width: 30em) {
+  h1 {
+    font-size: 2.2rem;
+    line-height: 2.75rem; } }
+
+@media screen and (min-width: 35em) {
   h1 {
     font-size: 3.1rem;
     line-height: 3.875rem; } }
 
-@media screen and (min-width: 740px) {
+@media screen and (min-width: 46.25em) {
   h1 {
     font-size: 3.3rem;
     line-height: 4.125rem; } }
 
-@media screen and (min-width: 1024px) {
+@media screen and (min-width: 50em) {
   h1 {
     font-size: 3.6rem;
     line-height: 4.5rem; } }
+
+@media screen and (min-width: 64em) {
+  h1 {
+    font-size: 4rem;
+    line-height: 5rem; } }
 
 h2 {
   font-size: 1.6rem;
@@ -903,17 +936,17 @@ h2 {
              * keys and values as needed
              */ }
 
-@media screen and (min-width: 480px) {
+@media screen and (min-width: 35em) {
   h2 {
     font-size: 1.8rem;
     line-height: 2.25rem; } }
 
-@media screen and (min-width: 740px) {
+@media screen and (min-width: 46.25em) {
   h2 {
     font-size: 2.2rem;
     line-height: 2.75rem; } }
 
-@media screen and (min-width: 1024px) {
+@media screen and (min-width: 64em) {
   h2 {
     font-size: 2.4rem;
     line-height: 3rem; } }
@@ -1031,7 +1064,7 @@ h1, h2, h3, h4 {
    These examples override the primary ('mobile first') styles.
    Modify as content requires.
    ========================================================================== */
-@media screen and (min-width: 1480px) {
+@media screen and (min-width: 92.5em) {
   html {
     font-size: 100%; } }
 
@@ -1097,27 +1130,33 @@ body {
   height: 100vh; }
 
 /* Import styles for view sections/pages here */
-body.project-1 {
-  background-color: #726837; }
-
-body.project-2 {
-  background-color: #2c233e; }
-
-body.project-3 {
-  background-color: #71283a; }
-
-.projects {
-  /* Start off hidden, so that we can animate the visibility in when we're ready to show */
-  opacity: 0;
-  visibility: hidden; }
-
 .slides-container {
   overflow: hidden; }
 
 .slide {
   text-align: center;
-  overflow: hidden;
-  background-color: red; }
+  overflow: hidden; }
 
 .slide-01 .slide__background {
-  background-image: url("assets/img/slide_01"); }
+  background-image: url("/assets/img/slide_01.jpg"); }
+
+.slide-02 .slide__background {
+  background-image: url("/assets/img/slide_02.jpg"); }
+
+.slide-03 .slide__background {
+  background-image: url("/assets/img/slide_03.jpg"); }
+
+.slide-04 .slide__background {
+  background-image: url("/assets/img/slide_04.jpg"); }
+
+.slide-01 .slide__title {
+  color: #f3eabf; }
+
+.slide-02 .slide__title {
+  color: #b796fd; }
+
+.slide-03 .slide__title {
+  color: #f2a1b5; }
+
+.slide-04 .slide__title {
+  color: #f2a1b5; }

@@ -1,3 +1,5 @@
+@import '../../helpers/slide-options';
+
 .slides-container {
     @extend %absolute-fill;
     overflow: hidden;        
@@ -7,12 +9,42 @@
     @extend %absolute-fill;
     text-align: center;              
     overflow: hidden;
-    background-color: red;
+    
+//    @media only screen and (min-width: #{map_get($map__breakpoint-sizes, 'small')}) {
+//        
+//    }
+    
 }
 
 .slide__background {
     
     .slide-01 & {
-        background-image: url('assets/img/slide_01');    
-    }    
+        background-image: url('/assets/img/slide_01.jpg');    
+    }
+    .slide-02 & {
+        background-image: url('/assets/img/slide_02.jpg');    
+    }  
+    .slide-03 & {
+        background-image: url('/assets/img/slide_03.jpg');    
+    }  
+    .slide-04 & {
+        background-image: url('/assets/img/slide_04.jpg');    
+    }  
+}
+
+
+.slide__title {
+    
+    .slide-01 & {
+        color: getSlideColor(slide-01, primary);
+    }
+    .slide-02 & {
+        color: getSlideColor(slide-02, primary);
+    }  
+    .slide-03 & {
+        color: getSlideColor(slide-03, primary);
+    }  
+    .slide-04 & {
+        color: getSlideColor(slide-04, primary);
+    } 
 }
