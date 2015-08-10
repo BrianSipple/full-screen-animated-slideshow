@@ -1,0 +1,16 @@
+@import 'application';
+
+
+body {
+    color: $font-color__primary-text--white-on-dark-background;
+    overflow-x: hidden;
+    transition: background-color 0.4s linear;        
+}
+
+.page-section__main-content {
+    height: 100vh;
+}
+
+@import 'views/views';
+
+

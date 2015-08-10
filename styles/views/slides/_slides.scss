@@ -1,0 +1,18 @@
+.slides-container {
+    @extend %absolute-fill;
+    overflow: hidden;        
+}
+
+.slide {
+    @extend %absolute-fill;
+    text-align: center;              
+    overflow: hidden;
+    background-color: red;
+}
+
+.slide__background {
+    
+    .slide-01 & {
+        background-image: url('assets/img/slide_01');    
+    }    
+}

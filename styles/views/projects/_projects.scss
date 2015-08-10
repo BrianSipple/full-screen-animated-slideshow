@@ -1,0 +1,27 @@
+@import '../../helpers/project-options';
+
+
+body {
+    &.project-1 {
+        background-color: getProjectColor(project-1, background);
+    }
+    &.project-2 {
+        background-color: getProjectColor(project-2, background);
+    }
+    &.project-3 {
+        background-color: getProjectColor(project-3, background);
+    }
+}
+
+.projects {
+    
+    /* Start off hidden, so that we can animate the visibility in when we're ready to show */
+    opacity: 0;
+    visibility: hidden;
+}
+
+
+// TODO: Add logic-based, project-specific styling here instead of on the base component
+.project {
+    
+}

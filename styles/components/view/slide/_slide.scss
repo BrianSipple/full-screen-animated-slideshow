@@ -1,0 +1,44 @@
+.slide {
+
+    /* 
+     * Additional outer styling should be controlled by slide-container, 
+     * but defaults can be set here 
+     */
+    transition: opacity .3s linear,
+                visibility .3s linear;
+    
+    
+    //////////////////////////
+    // Inner elements
+    //////////////////////////
+    
+    .slide__background {
+        @extend %centered-background-image--cover;
+        @extend %absolute-fill;
+        
+        /* Slight opacity to enhance text-readability on dark backgrounds */
+        opacity: 0.9; 
+        
+        /* Behind slide content */
+        z-index: 1;
+    }
+    
+    .slide__content {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate3d(-50%, -50%, 0);
+        z-index: 2;
+    }
+    
+    .slide__title {
+        font-size: 2.4rem;
+    }
+    
+    .slide__description {
+        font-size: 1.4rem;
+        color: $font-color__button--white-on-dark-background;
+        margin: 0;
+    }
+            
+}

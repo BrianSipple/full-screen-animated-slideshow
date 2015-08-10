@@ -1,0 +1,14 @@
+$background-floater__width: 1.5rem;
+$background-floater__height: 1.5rem;
+$project__pixel__background-color: rgba(242, 236, 29, 0.1);
+
+
+.background-floater {
+    width: $background-floater__width;
+    height: $background-floater__height;
+    top: 50%;
+    left: 50%;
+    border-radius: 100%;
+    background-color: $project__pixel__background-color;
+    z-index: 3;
+}
