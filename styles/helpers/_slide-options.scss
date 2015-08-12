@@ -3,16 +3,16 @@ $slide-palette: (
             
     slide-01: (
                     
-        primary: hsla(50, 68%, 85%, 1),
+        primary: hsla(257, 18%, 31%, 1),
                 
         /* hsla analogues of the primary */
-        primary--light-shade: hsla(38, 87%, 85%, 1),
-        primary--dark-shade: hsla(66, 87%, 85%, 0.7),
+        primary--light-tint: hsla(273, 23%, 37%, 1),
+        primary--dark-tint: hsla(225, 23%, 34%, 0.7),
         
         /* Saturation- and lightness-altered monochrome variant of the primary */                
-        background: hsla(50, 35%, 33%, 1),
+        background: hsla(257, 44%, 46%, 1),
         
-        accent: hsla(241, 28%, 52%, 1)
+        accent: hsla(56, 35%, 49%, 1)
     ),
        
     slide-02: (
@@ -20,8 +20,8 @@ $slide-palette: (
         primary: hsla(259, 96%, 79%, 1),    
         
         /* hsla analogues of the primary */
-        primary--light-shade: hsla(292, 98%, 76%, 1),
-        primary--dark-shade: hsla(243, 68%, 69%, 0.7),
+        primary--light-tint: hsla(292, 98%, 76%, 1),
+        primary--dark-tint: hsla(243, 68%, 69%, 0.7),
         
         /* Saturation- and lightness-altered monochrome variant of the primary */        
         background: hsla(259, 27%, 19%, 1),

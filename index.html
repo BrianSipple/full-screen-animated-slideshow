@@ -15,7 +15,7 @@
         <script src="vendor/modernizer/modernizr.js"></script>
 
     </head>
-    <body>
+    <body class="slide-01">
         <!--[if lt IE 8]>
             <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
@@ -27,7 +27,9 @@
                 
                 <div class="slides-container">
                    
-                    <div class="slide slide-01 active">                       
+                    <div class="slide slide-01" 
+                         data-slide-id-class="slide-01"
+                         data-slide-index="0">                       
                         <div class="slide__background"></div>
                        
                         <div class="slide__content">
@@ -36,7 +38,9 @@
                         </div>                        
                     </div>
                     
-                    <div class="slide slide-02">                       
+                    <div class="slide slide-02" 
+                         data-slide-id-class="slide-02"
+                         data-slide-index="1">
                         <div class="slide__background"></div>
                        
                         <div class="slide__content">
@@ -45,7 +49,9 @@
                         </div>                        
                     </div>
                     
-                    <div class="slide slide-03">                       
+                    <div class="slide slide-03" 
+                         data-slide-id-class="slide-03"
+                         data-slide-index="2">                       
                         <div class="slide__background"></div>
                        
                         <div class="slide__content">
@@ -54,7 +60,9 @@
                         </div>                        
                     </div>
                     
-                    <div class="slide slide-04">                       
+                    <div class="slide slide-04" 
+                         data-slide-id-class="slide-04"
+                         data-slide-index="3">                       
                         <div class="slide__background"></div>
                        
                         <div class="slide__content">
@@ -66,35 +74,50 @@
                    
                 </div>
                    
-                   
-                   
-                   
-                   
-               <div class="tab-selectors">
+
+               <div class="tab-selectors tab-selectors--bordered">
                     <div class="tab-selectors__content">
-                        <div class="tab-selectors__tab-list">
-                           
-                            <div class="tab">
-                                <a class="tab-link"></a>
-                            </div>
+                        
+                       <ul class="tab-selectors__tab-list">
                             
-                            <div class="tab">
-                                <a class="tab-link"></a>
-                            </div>
+                            <li class="tab active">
+                                <a class="tab__link" 
+                                    data-slide-index="0" 
+                                    data-slide-id-class="slide-01" 
+                                    href="#slide-01">
+                                        Slide 1
+                                </a>
+                            </li>
+                            <li class="tab">
+                                <a class="tab__link" 
+                                    data-slide-index="1"  
+                                    data-slide-id-class="slide-02" 
+                                    href="#slide-02">
+                                        Slide 2
+                                </a>
+                            </li>
+                            <li class="tab">
+                                <a class="tab__link" 
+                                    data-slide-index="2"  
+                                    data-slide-id-class="slide-03" 
+                                    href="#slide-03">
+                                        Slide 3
+                                </a>
+                            </li>
+                            <li class="tab">
+                                <a class="tab__link" 
+                                    data-slide-index="3"  
+                                    data-slide-id-class="slide-04" 
+                                    href="#slide-04">
+                                        Slide 4
+                                </a>
+                            </li>
                             
-                            <div class="tab">
-                                <a class="tab-link"></a>
-                            </div>
-                            
-                            <div class="tab">
-                                <a class="tab-link"></a>
-                            </div>
-                            
-                            
-                        </div>
+                        </ul>
+                                              
                     </div>
                 </div>
-                
+                            
                 
             </section>
 

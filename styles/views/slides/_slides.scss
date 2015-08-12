@@ -10,10 +10,12 @@
     text-align: center;              
     overflow: hidden;
     
-//    @media only screen and (min-width: #{map_get($map__breakpoint-sizes, 'small')}) {
-//        
-//    }
+    /* Push down off the bottom of the screen so that we can slide vertically into view */    
+    transform: translateY(100%);
     
+    /* Blur out so that we can animate opacity as we animate into view */
+    opacity: 0;  
+
 }
 
 .slide__background {
@@ -46,5 +48,80 @@
     }  
     .slide-04 & {
         color: getSlideColor(slide-04, primary);
+    } 
+}
+
+.tab-selectors {
+    position: fixed;
+    bottom: 40px;
+    right: 40px;
+    left: 40px;
+    z-index: 3;
+    
+    /* set background color at a per-tab level */
+    background-color: transparent;  
+        
+}
+
+.tab__link {
+    .slide-01 & {
+        color: getSlideColor(slide-01, accent);
+    }
+    .slide-02 & {
+        color: getSlideColor(slide-01, accent);
+    }  
+    .slide-03 & {
+        color: getSlideColor(slide-01, accent);
+    }  
+    .slide-04 & {
+        color: getSlideColor(slide-01, accent);
+    }
+    
+    @media screen and (min-width: #{map-get($map__breakpoint-sizes, 'small')}) {
+        font-size: 2.4rem;
+    }
+}
+
+.tab {
+    border-width: 1px 0 1px 1px;
+    border-style: solid;
+    border-color: $font-color__button--white-on-dark-background;
+    
+    &:last-child {
+        border-width: 1px;
+    }    
+    
+    /* 
+     * Use unique background color for tabs depending on the the slide -- AND 
+     * alter transparency to make the active tab more opaque
+     */
+    
+    .slide-01 & {
+        background-color: transparentize(getSlideColor(slide-01, primary), 0.8);
+        
+        &.active {
+            background-color: transparentize(getSlideColor(slide-01, primary), 0.2);
+        }
+    }
+    .slide-02 & {
+        background-color: transparentize(getSlideColor(slide-02, primary), 0.8);
+        
+        &.active {
+            background-color: transparentize(getSlideColor(slide-02, primary), 0.2);
+        }
+    }  
+    .slide-03 & {
+        background-color: transparentize(getSlideColor(slide-03, primary), 0.8);
+        
+        &.active {
+            background-color: transparentize(getSlideColor(slide-03, primary), 0.2);            
+        }
+    }  
+    .slide-04 & {
+        background-color: transparentize(getSlideColor(slide-04, primary), 0.8);
+        
+        &.active {
+            background-color: transparentize(getSlideColor(slide-04, primary), 0.2);
+        }
     } 
 }

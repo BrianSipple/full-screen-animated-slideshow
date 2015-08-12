@@ -194,7 +194,7 @@
   min-width: 100%;
   max-width: 100%; }
 
-@media screen and (min-width: 92.5em) {
+@media screen and (min-width: 64em) {
   .menu {
     padding-bottom: 6em; }
   .menu.menu--genres {
@@ -370,11 +370,12 @@
   display: flex;
   align-items: center;
   height: 48px;
-  font-size: 0.875em;
+  font-size: 1.2rem;
   font-weight: 500;
   overflow: hidden;
   -webkit-tap-highlight-color: transparent;
-  user-select: none; }
+  user-select: none;
+  transition: background-color 0.3s linear; }
 
 .tab-selectors .tab-selectors__content {
   height: 100%;
@@ -477,7 +478,7 @@
   max-height: 100%;
   flex: 1; }
 
-@media screen and (max-width: 46.25em) {
+@media screen and (max-width: 43.75em) {
   .panel {
     flex-direction: column;
     flex-wrap: wrap; } }
@@ -528,7 +529,7 @@
   font-style: italic;
   color: rgba(255, 255, 255, 0.7); }
 
-@media screen and (max-width: 46.25em) {
+@media screen and (max-width: 43.75em) {
   .subtitle {
     font-size: 1.6rem; } }
 
@@ -687,7 +688,7 @@
    ========================================================================== */
 html {
   font-size: 62.5%;
-  /* sets the base font to 10px for better math */
+  /* sets the base font to 10px for better rem math */
   line-height: 1.4; }
 
 /*
@@ -778,15 +779,12 @@ body {
   padding: 0; }
 
 html {
-  color: #212121; }
+  color: #212121;
+  /* sets the base font to 10px for better rem math */
+  font-size: 62.5%;
+  line-height: 1.4; }
 
 body {
-  font-size: 1.6rem;
-  /* sets the default sizing to make sure nothing is actually 10px */
-  background-color: #2e2e30;
-  font-family: "Open Sans", Helvetica, Helvetica Neue, Arial, sans-serif; }
-
-p, ul, ol {
   font-size: 1.5rem;
   line-height: 1.95rem;
   /* If $font-size is a key that exists in
@@ -817,39 +815,36 @@ p, ul, ol {
              * we assume it's a literal value. This way, each map can mix and match
              * keys and values as needed
              */
-  /* If $font-size is a key that exists in
-             * $breakpoint-sizes, use the value to
-             * create a media query using the breakpoint */
-  /* If the $font-size is NOT in the $breakpoint-sizes map,
-             * we assume it's a literal value. This way, each map can mix and match
-             * keys and values as needed
-             */ }
+  background-color: #2e2e30;
+  font-family: "Open Sans", Helvetica, Helvetica Neue, Arial, sans-serif; }
 
 @media screen and (min-width: 35em) {
-  p, ul, ol {
-    font-size: 1.6rem; } }
+  body {
+    font-size: 1.6rem;
+    line-height: 2rem; } }
 
-@media screen and (min-width: 46.25em) {
-  p, ul, ol {
-    font-size: 1.7rem;
-    line-height: 2.3799rem; } }
+@media screen and (min-width: 43.75em) {
+  body {
+    font-size: 1.6rem;
+    line-height: 2.2rem; } }
 
-@media screen and (min-width: 900px) {
-  p, ul, ol {
-    font-size: 1.8rem; } }
+@media screen and (min-width: 56.25em) {
+  body {
+    font-size: 1.75rem;
+    line-height: 2.40625rem; } }
 
-@media screen and (min-width: 64em) {
-  p, ul, ol {
-    font-size: 1.9rem;
-    line-height: 2.755rem; } }
+@media screen and (min-width: 90em) {
+  body {
+    font-size: 2rem;
+    line-height: 3rem; } }
 
-@media screen and (min-width: 1440px) {
-  p, ul, ol {
-    font-size: 2rem; } }
+body, h1, h2, h3, h4, h5, h6 {
+  /* https://developer.mozilla.org/en-US/docs/Web/CSS/font-size-adjust */
+  font-size-adjust: 0.5; }
 
 h1 {
-  font-size: 1.8rem;
-  line-height: 2.25rem;
+  font-size: 3.2rem;
+  line-height: 4rem;
   /* If $font-size is a key that exists in
              * $breakpoint-sizes, use the value to
              * create a media query using the breakpoint */
@@ -888,32 +883,46 @@ h1 {
 
 @media screen and (min-width: 30em) {
   h1 {
-    font-size: 2.2rem;
-    line-height: 2.75rem; } }
+    font-size: 3.2rem;
+    line-height: 4rem; } }
 
 @media screen and (min-width: 35em) {
   h1 {
-    font-size: 3.1rem;
-    line-height: 3.875rem; } }
+    font-size: 3.2rem;
+    line-height: 4rem; } }
 
-@media screen and (min-width: 46.25em) {
+@media screen and (min-width: 43.75em) {
   h1 {
-    font-size: 3.3rem;
-    line-height: 4.125rem; } }
+    font-size: 4rem;
+    line-height: 4.5rem; } }
 
 @media screen and (min-width: 50em) {
   h1 {
-    font-size: 3.6rem;
-    line-height: 4.5rem; } }
+    font-size: 4.8rem;
+    line-height: 5.04rem; } }
 
-@media screen and (min-width: 64em) {
+@media screen and (min-width: 56.25em) {
   h1 {
-    font-size: 4rem;
-    line-height: 5rem; } }
+    font-size: 4.8rem;
+    line-height: 5.04rem; } }
 
 h2 {
-  font-size: 1.6rem;
-  line-height: 2rem;
+  font-size: 2.6rem;
+  line-height: 2.99999rem;
+  /* If $font-size is a key that exists in
+             * $breakpoint-sizes, use the value to
+             * create a media query using the breakpoint */
+  /* If the $font-size is NOT in the $breakpoint-sizes map,
+             * we assume it's a literal value. This way, each map can mix and match
+             * keys and values as needed
+             */
+  /* If $font-size is a key that exists in
+             * $breakpoint-sizes, use the value to
+             * create a media query using the breakpoint */
+  /* If the $font-size is NOT in the $breakpoint-sizes map,
+             * we assume it's a literal value. This way, each map can mix and match
+             * keys and values as needed
+             */
   /* If $font-size is a key that exists in
              * $breakpoint-sizes, use the value to
              * create a media query using the breakpoint */
@@ -936,20 +945,222 @@ h2 {
              * keys and values as needed
              */ }
 
+@media screen and (min-width: 30em) {
+  h2 {
+    font-size: 2.6rem;
+    line-height: 2.99999rem; } }
+
 @media screen and (min-width: 35em) {
   h2 {
-    font-size: 1.8rem;
-    line-height: 2.25rem; } }
+    font-size: 2.6rem;
+    line-height: 2.99999rem; } }
 
-@media screen and (min-width: 46.25em) {
+@media screen and (min-width: 43.75em) {
   h2 {
+    font-size: 3.2rem;
+    line-height: 4rem; } }
+
+@media screen and (min-width: 50em) {
+  h2 {
+    font-size: 3.6rem;
+    line-height: 4.5rem; } }
+
+@media screen and (min-width: 56.25em) {
+  h2 {
+    font-size: 3.6rem;
+    line-height: 4.5rem; } }
+
+h3 {
+  font-size: 2.2rem;
+  line-height: 2.5rem;
+  /* If $font-size is a key that exists in
+             * $breakpoint-sizes, use the value to
+             * create a media query using the breakpoint */
+  /* If the $font-size is NOT in the $breakpoint-sizes map,
+             * we assume it's a literal value. This way, each map can mix and match
+             * keys and values as needed
+             */
+  /* If $font-size is a key that exists in
+             * $breakpoint-sizes, use the value to
+             * create a media query using the breakpoint */
+  /* If the $font-size is NOT in the $breakpoint-sizes map,
+             * we assume it's a literal value. This way, each map can mix and match
+             * keys and values as needed
+             */
+  /* If $font-size is a key that exists in
+             * $breakpoint-sizes, use the value to
+             * create a media query using the breakpoint */
+  /* If the $font-size is NOT in the $breakpoint-sizes map,
+             * we assume it's a literal value. This way, each map can mix and match
+             * keys and values as needed
+             */
+  /* If $font-size is a key that exists in
+             * $breakpoint-sizes, use the value to
+             * create a media query using the breakpoint */
+  /* If the $font-size is NOT in the $breakpoint-sizes map,
+             * we assume it's a literal value. This way, each map can mix and match
+             * keys and values as needed
+             */
+  /* If $font-size is a key that exists in
+             * $breakpoint-sizes, use the value to
+             * create a media query using the breakpoint */
+  /* If the $font-size is NOT in the $breakpoint-sizes map,
+             * we assume it's a literal value. This way, each map can mix and match
+             * keys and values as needed
+             */ }
+
+@media screen and (min-width: 30em) {
+  h3 {
     font-size: 2.2rem;
-    line-height: 2.75rem; } }
+    line-height: 2.5rem; } }
 
-@media screen and (min-width: 64em) {
-  h2 {
+@media screen and (min-width: 35em) {
+  h3 {
+    font-size: 2.2rem;
+    line-height: 2.5rem; } }
+
+@media screen and (min-width: 43.75em) {
+  h3 {
     font-size: 2.4rem;
     line-height: 3rem; } }
+
+@media screen and (min-width: 50em) {
+  h3 {
+    font-size: 2.8rem;
+    line-height: 3.5rem; } }
+
+@media screen and (min-width: 56.25em) {
+  h3 {
+    font-size: 2.8rem;
+    line-height: 3.5rem; } }
+
+h4 {
+  font-size: 1.8rem;
+  line-height: 2.0rem;
+  /* If $font-size is a key that exists in
+             * $breakpoint-sizes, use the value to
+             * create a media query using the breakpoint */
+  /* If the $font-size is NOT in the $breakpoint-sizes map,
+             * we assume it's a literal value. This way, each map can mix and match
+             * keys and values as needed
+             */
+  /* If $font-size is a key that exists in
+             * $breakpoint-sizes, use the value to
+             * create a media query using the breakpoint */
+  /* If the $font-size is NOT in the $breakpoint-sizes map,
+             * we assume it's a literal value. This way, each map can mix and match
+             * keys and values as needed
+             */
+  /* If $font-size is a key that exists in
+             * $breakpoint-sizes, use the value to
+             * create a media query using the breakpoint */
+  /* If the $font-size is NOT in the $breakpoint-sizes map,
+             * we assume it's a literal value. This way, each map can mix and match
+             * keys and values as needed
+             */
+  /* If $font-size is a key that exists in
+             * $breakpoint-sizes, use the value to
+             * create a media query using the breakpoint */
+  /* If the $font-size is NOT in the $breakpoint-sizes map,
+             * we assume it's a literal value. This way, each map can mix and match
+             * keys and values as needed
+             */
+  /* If $font-size is a key that exists in
+             * $breakpoint-sizes, use the value to
+             * create a media query using the breakpoint */
+  /* If the $font-size is NOT in the $breakpoint-sizes map,
+             * we assume it's a literal value. This way, each map can mix and match
+             * keys and values as needed
+             */ }
+
+@media screen and (min-width: 30em) {
+  h4 {
+    font-size: 1.8rem;
+    line-height: 2.0rem; } }
+
+@media screen and (min-width: 35em) {
+  h4 {
+    font-size: 1.8rem;
+    line-height: 2.0rem; } }
+
+@media screen and (min-width: 43.75em) {
+  h4 {
+    font-size: 1.8rem;
+    line-height: 2.2rem; } }
+
+@media screen and (min-width: 50em) {
+  h4 {
+    font-size: 1.8rem;
+    line-height: 2.2rem; } }
+
+@media screen and (min-width: 56.25em) {
+  h4 {
+    font-size: 1.8rem;
+    line-height: 2.2rem; } }
+
+blockquote {
+  font-size: 2rem;
+  line-height: 2.5rem;
+  /* If $font-size is a key that exists in
+             * $breakpoint-sizes, use the value to
+             * create a media query using the breakpoint */
+  /* If the $font-size is NOT in the $breakpoint-sizes map,
+             * we assume it's a literal value. This way, each map can mix and match
+             * keys and values as needed
+             */
+  /* If $font-size is a key that exists in
+             * $breakpoint-sizes, use the value to
+             * create a media query using the breakpoint */
+  /* If the $font-size is NOT in the $breakpoint-sizes map,
+             * we assume it's a literal value. This way, each map can mix and match
+             * keys and values as needed
+             */
+  /* If $font-size is a key that exists in
+             * $breakpoint-sizes, use the value to
+             * create a media query using the breakpoint */
+  /* If the $font-size is NOT in the $breakpoint-sizes map,
+             * we assume it's a literal value. This way, each map can mix and match
+             * keys and values as needed
+             */
+  /* If $font-size is a key that exists in
+             * $breakpoint-sizes, use the value to
+             * create a media query using the breakpoint */
+  /* If the $font-size is NOT in the $breakpoint-sizes map,
+             * we assume it's a literal value. This way, each map can mix and match
+             * keys and values as needed
+             */
+  /* If $font-size is a key that exists in
+             * $breakpoint-sizes, use the value to
+             * create a media query using the breakpoint */
+  /* If the $font-size is NOT in the $breakpoint-sizes map,
+             * we assume it's a literal value. This way, each map can mix and match
+             * keys and values as needed
+             */ }
+
+@media screen and (min-width: 30em) {
+  blockquote {
+    font-size: 2rem;
+    line-height: 2.5rem; } }
+
+@media screen and (min-width: 35em) {
+  blockquote {
+    font-size: 2rem;
+    line-height: 2.5rem; } }
+
+@media screen and (min-width: 43.75em) {
+  blockquote {
+    font-size: 2.4rem;
+    line-height: 3.5rem; } }
+
+@media screen and (min-width: 50em) {
+  blockquote {
+    font-size: 2.4rem;
+    line-height: 3.5rem; } }
+
+@media screen and (min-width: 56.25em) {
+  blockquote {
+    font-size: 2.4rem;
+    line-height: 3.5rem; } }
 
 h1, h2, h3, h4 {
   font-weight: 700; }
@@ -1064,7 +1275,7 @@ h1, h2, h3, h4 {
    These examples override the primary ('mobile first') styles.
    Modify as content requires.
    ========================================================================== */
-@media screen and (min-width: 92.5em) {
+@media screen and (min-width: 64em) {
   html {
     font-size: 100%; } }
 
@@ -1135,7 +1346,11 @@ body {
 
 .slide {
   text-align: center;
-  overflow: hidden; }
+  overflow: hidden;
+  /* Push down off the bottom of the screen so that we can slide vertically into view */
+  transform: translateY(100%);
+  /* Blur out so that we can animate opacity as we animate into view */
+  opacity: 0; }
 
 .slide-01 .slide__background {
   background-image: url("/assets/img/slide_01.jpg"); }
@@ -1150,7 +1365,7 @@ body {
   background-image: url("/assets/img/slide_04.jpg"); }
 
 .slide-01 .slide__title {
-  color: #f3eabf; }
+  color: #49415d; }
 
 .slide-02 .slide__title {
   color: #b796fd; }
@@ -1160,3 +1375,64 @@ body {
 
 .slide-04 .slide__title {
   color: #f2a1b5; }
+
+.tab-selectors {
+  position: fixed;
+  bottom: 40px;
+  right: 40px;
+  left: 40px;
+  z-index: 3;
+  /* set background color at a per-tab level */
+  background-color: transparent; }
+
+.slide-01 .tab__link {
+  color: #a9a351; }
+
+.slide-02 .tab__link {
+  color: #a9a351; }
+
+.slide-03 .tab__link {
+  color: #a9a351; }
+
+.slide-04 .tab__link {
+  color: #a9a351; }
+
+@media screen and (min-width: 35em) {
+  .tab__link {
+    font-size: 2.4rem; } }
+
+.tab {
+  border-width: 1px 0 1px 1px;
+  border-style: solid;
+  border-color: rgba(255, 255, 255, 0.7);
+  /* 
+     * Use unique background color for tabs depending on the the slide -- AND 
+     * alter transparency to make the active tab more opaque
+     */ }
+
+.tab:last-child {
+  border-width: 1px; }
+
+.slide-01 .tab {
+  background-color: rgba(73, 65, 93, 0.2); }
+
+.slide-01 .tab.active {
+  background-color: rgba(73, 65, 93, 0.8); }
+
+.slide-02 .tab {
+  background-color: rgba(183, 150, 253, 0.2); }
+
+.slide-02 .tab.active {
+  background-color: rgba(183, 150, 253, 0.8); }
+
+.slide-03 .tab {
+  background-color: rgba(242, 161, 181, 0.2); }
+
+.slide-03 .tab.active {
+  background-color: rgba(242, 161, 181, 0.8); }
+
+.slide-04 .tab {
+  background-color: rgba(242, 161, 181, 0.2); }
+
+.slide-04 .tab.active {
+  background-color: rgba(242, 161, 181, 0.8); }

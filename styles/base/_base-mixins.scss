@@ -27,13 +27,13 @@
  * dynamically create media queries
  * ----------------------------------------------------------------------------------------------------*/
 $map__breakpoint-sizes: (
-    x-small: 30em,
-    small: 35em,
-    medium: 46.25em,
-    medium-large: 50em,
-    large: 64em,
-    db-widgets: 68.75em,
-    x-large: 92.5em
+    x-small: 30em,        /* Phone */
+    small: 35em,        /* Small tablet */
+    medium: 43.75em,   /* Average tablet */
+    medium-large: 50em, /* Small desktop */
+    large: 56.25em,    /* Medium desktop */
+    x-large: 64em,    /* Large desktop */
+    xx-large: 90em
 );
 
 
@@ -42,33 +42,69 @@ $map__breakpoint-sizes: (
  * Keys are the breakpoints, font-sizes (occassionally with line heights) are the corresponding values
  * ---------------------------------------------------------------------------------------------------- 
  */
-$map__font-sizes--p: (
+$map__font-sizes--body: (
+    
+    /* (font-size, line-height) */
     null: (1.5rem, 1.95rem),
-    small: 1.6rem,
-    medium: (1.7rem, 2.3799rem),
-    900px: 1.8rem,
-    large: (1.9rem, 2.755rem),
-    1440px: 2.0rem
+    small: (1.6rem, 2.0rem), /* REM Multiplier: 1.25 */
+    medium: (1.6rem, 2.2rem), /* REM Multiplier: 1.375 */
+    large: (1.75rem, 2.40625rem), /* REM Multiplier: 1.375 */
+    xx-large: (2.0rem, 3.0rem)  /* REM Multiplier: 1.5 */
 );
 
 $map__font-sizes--h1: (
     
-    /* (font-size, line-height) **Currently using line-height multiplier of 1.25** */
-    null: (1.8rem, 2.25rem),   
-    x-small: (2.2rem, 2.75rem),   
-    small: (3.1rem, 3.875rem),
-    medium: (3.3rem, 4.125rem),
-    medium-large: (3.6rem, 4.5rem),
-    large: (4.0rem, 5.0rem)
+    /* (font-size, line-height) */
+    null: (3.2rem, 4.0rem),   
+    x-small: (3.2rem, 4.0rem),   /* REM Multiplier: 1.25 */
+    small: (3.2rem, 4.0rem),    /* REM Multiplier: 1.25 */
+    medium: (4.0rem, 4.5rem),  /* REM Multiplier: 1.125 */
+    medium-large: (4.8rem, 5.04rem), /* REM Multiplier: 1.05 */
+    large: (4.8rem, 5.04rem)
 );
 
 $map__font-sizes--h2: (
     
-    /* (font-size, line-height) **Currently using line-height multiplier of 1.25** */
-    null: (1.6rem, 2.0rem),
-    small: (1.8rem, 2.25rem),
-    medium: (2.2rem, 2.75rem),
-    large: (2.4rem, 3.0rem)
+    /* (font-size, line-height) */
+    null: (2.6rem, 2.99999rem),   
+    x-small: (2.6rem, 2.99999rem),   /* REM Multiplier: 1.15384615 */
+    small: (2.6rem, 2.99999rem),    /* REM Multiplier: 1.15384615 */
+    medium: (3.2rem, 4.0rem),  /* REM Multiplier: 1.25 */
+    medium-large: (3.6rem, 4.5rem), /* REM Multiplier: 1.25 */
+    large: (3.6rem, 4.5rem), /* REM Multiplier: 1.25 */
+);
+
+$map__font-sizes--h3: (
+    
+    /* (font-size, line-height) */
+    null: (2.2rem, 2.5rem),   
+    x-small: (2.2rem, 2.5rem),   /* REM Multiplier: 1.13636364 */
+    small: (2.2rem, 2.5rem),    /* REM Multiplier: 1.13636364 */
+    medium: (2.4rem, 3.0rem),  /* REM Multiplier: 1.25 */
+    medium-large: (2.8rem, 3.5rem), /* REM Multiplier: 1.25 */
+    large: (2.8rem, 3.5rem), /* REM Multiplier: 1.25 */
+);
+
+$map__font-sizes--h4: (
+    
+    /* (font-size, line-height) */
+    null: (1.8rem, 1.999999998rem),   
+    x-small: (1.8rem, 1.999999998rem),   /* REM Multiplier: 1.11111111 */
+    small: (1.8rem, 1.999999998rem),    /* REM Multiplier: 1.11111111 */
+    medium: (1.8rem, 2.199999996rem),  /* REM Multiplier: 1.22222222 */
+    medium-large: (1.8rem, 2.199999996rem),  /* REM Multiplier: 1.22222222 */
+    large: (1.8rem, 2.199999996rem),  /* REM Multiplier: 1.22222222 */
+);
+
+$map__font-sizes--blockquote: (
+    
+    /* (font-size, line-height) */
+    null: (2.0rem, 2.5rem),
+    x-small: (2.0rem, 2.5rem),   /* REM Multiplier: 1.25 */
+    small: (2.0rem, 2.5rem),   /* REM Multiplier: 1.25 */
+    medium: (2.4rem, 3.4999999920000002rem),  /* REM Multiplier: 1.45833333 */
+    medium-large: (2.4rem, 3.4999999920000002rem),  /* REM Multiplier: 1.45833333 */
+    large: (2.4rem, 3.4999999920000002rem),  /* REM Multiplier: 1.45833333 */
 );
 
 /**

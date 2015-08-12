@@ -12,7 +12,7 @@
    ========================================================================== */
 
 html {
-  font-size: 62.5%; /* sets the base font to 10px for better math */
+  font-size: 62.5%; /* sets the base font to 10px for better rem math */
   line-height: 1.4;
 }
 
@@ -122,16 +122,23 @@ body {
 
 html {
     color: $font-color__primary-text--black-on-light-background;
+    
+    /* sets the base font to 10px for better rem math */
+    font-size: 62.5%; 
+    line-height: 1.4;
 }
 
 body {
-    font-size: 1.6rem; /* sets the default sizing to make sure nothing is actually 10px */
+    @include FontSize($map__font-sizes--body);
     background-color: $background-color__page--primary;
     font-family: $font-family-stack__main;
 }
 
-p, ul, ol {
-  @include FontSize($map__font-sizes--p);
+
+body, h1, h2, h3, h4, h5, h6 {
+    
+    /* https://developer.mozilla.org/en-US/docs/Web/CSS/font-size-adjust */
+    font-size-adjust: 0.5;
 }
 
 h1 {
@@ -140,6 +147,18 @@ h1 {
 
 h2 {
     @include FontSize($map__font-sizes--h2);
+}
+
+h3 {
+    @include FontSize($map__font-sizes--h3); 
+}
+
+h4 {
+    @include FontSize($map__font-sizes--h4);
+}
+
+blockquote {
+    @include FontSize($map__font-sizes--blockquote);    
 }
 
 h1, h2, h3, h4 {
