@@ -6,6 +6,9 @@ var app = (function (exports) {
             slideTabLink: '.tab__link',
             slidesContainer: '.slides-container',
             slide: '.slide',
+            slideBackground: '.slide__background',
+            slideHeading: '.slide__title',
+            slideDescription: '.slide__description'
         },
         
         CLASSES = {
@@ -26,6 +29,10 @@ var app = (function (exports) {
             slideInOrOut: Power4.easeInOut
         },
         
+        isSlideAnimating = false,
+        
+        
+        // Wire up DOM references that we'll use to respond to input
         slideTabSelectorsContainer = document.querySelector(SELECTORS.slideTabSelectors),
         
         slideTabSelectorLinks = 
@@ -34,7 +41,15 @@ var app = (function (exports) {
         slidesContainer = document.querySelector(SELECTORS.slidesContainer),
         slideElems = slidesContainer.querySelectorAll(SELECTORS.slide),
         
-        
+        // Initialize cache of DOM references to slide components that we'll be animating
+        animatedSlideComponents = {
+            backgroundFrom: undefined,
+            backgroundTo: undefined,
+            headingTo: undefined,
+            headingFrom: undefined,            
+            descriptionTo: undefined,
+            descriptionFrom: undefined
+        },
         
         
         masterTL,
@@ -51,52 +66,7 @@ var app = (function (exports) {
         
     
     
-    // TODO: See if these tweens aren't better off as from-to's
-    function slideOutUp (slideElem) {        
-        if (slideElem) {            
-            TweenMax.fromTo(
-                slideElem, 
-                DURATIONS.slideInOrOut, 
-                { y: '0%', opacity: 1 },
-                { y: '-100%', opacity: 0, ease: EASINGS.slideInOrOut }
-            );
-        }
-    }
-    
-    function slideOutDown (slideElem) {
-        if (slideElem) {
-            TweenMax.fromTo(
-                slideElem, 
-                DURATIONS.slideInOrOut, 
-                { y: '0%', opacity: 1 },
-                { y: '100%', opacity: 0 }
-            );
-        }
-    }
-    
-    function slideInUp (slideElem) {
-        if (slideElem) {
-            TweenMax.fromTo(
-                slideElem, 
-                DURATIONS.slideInOrOut,
-                { y: '100%', opacity: 0},
-                { y: '0%', opacity: 1, ease: EASINGS.slideInOrOut }
-            );
-        }
-    }
-    
-    function slideInDown (slideElem) {        
-        if (slideElem) {            
-            TweenMax.fromTo(
-                slideElem, 
-                DURATIONS.slideInOrOut, 
-                { y: '-100%', opacity: 0 },
-                { y: '0%', opacity: 1 }
-            );
-        }
-    }
-    
-    
+        
     function setActiveSlideTab (activeTabElem) {
         
         [].forEach.call(slideTabSelectorLinks, function (linkElem) {
@@ -129,7 +99,10 @@ var app = (function (exports) {
         cancelDefaultEventBehavior(ev);
         
         // Only act if the tab selected is different from the active tab
-        if (ev.target !== currentActiveSlideElem) {
+        if (ev.target !== currentActiveSlideElem && !isSlideAnimating) {
+            
+            isSlideAnimating = true;
+            
             setActiveSlideTab(ev.target);
             syncActiveTabWithSlides(ev.target);       
         }
@@ -164,6 +137,51 @@ var app = (function (exports) {
         activeSlideElem.classList.add(CLASSES.activeSlide);
     }
     
+    
+    
+    // TODO: See if these tweens aren't better off as from-to's
+    function slideOutUp (slideElem) {        
+        if (slideElem) {            
+           return TweenMax.to(
+                slideElem, 
+                DURATIONS.slideInOrOut, 
+                { y: '-100%', opacity: 0, ease: EASINGS.slideInOrOut, clearProps: 'all'}
+            );
+        }
+    }
+    
+    function slideOutDown (slideElem) {
+        if (slideElem) {
+            return TweenMax.to(
+                slideElem, 
+                DURATIONS.slideInOrOut, 
+                { y: '100%', opacity: 1, ease: EASINGS.slideInOrOut, clearProps: 'all' }
+            );
+        }
+    }
+    
+    function slideInFromBottom (slideElem) {
+        if (slideElem) {
+            return TweenMax.to(
+                slideElem, 
+                DURATIONS.slideInOrOut,
+                { y: '0%', opacity: 1, ease: EASINGS.slideInOrOut }
+            );
+        }
+    }
+    
+    function slideInFromTop (slideElem) {        
+        if (slideElem) {            
+            return TweenMax.to(
+                slideElem, 
+                DURATIONS.slideInOrOut, 
+                { y: '0%', opacity: 1, ease: EASINGS.slideInOrOut }
+            );
+        }
+    }
+    
+
+    
 //    function updateBodySlideClass(prevClass, currentClass) {
 //        document.body.classList.remove(prevClass);
 //        document.body.classList.add(currentClass);
@@ -183,29 +201,127 @@ var app = (function (exports) {
     }
     
     
-    
-    
-    function animateToLowerSlide(previousActiveSlideElem, currentActiveSlideElem) {  
-        
-        
-        slideOutUp(previousActiveSlideElem);
-        slideInUp(currentActiveSlideElem);
+    /**
+     * Glide in the background element at a slower rate than the slide itself, which
+     * will create a parralaxing effect.
+     * 
+     * "clearProps" ensures that the inline property alterations applied are removed once the 
+     * new state is reached (i.e: styles default back to stylesheet rules)
+     */
+    function slowGlideBackgroundUpAndOut (elem) {
+        return TweenMax.to(
+            elem, 
+            DURATIONS.slideInOrOut,
+            { y: '30%', ease: EASINGS.slideInOrOut, clearProps: 'all' }
+        );        
     }
     
-    function animateToHigherSlide (previousActiveSlideElem, currentActiveSlideElem) {
-        slideOutDown(previousActiveSlideElem);
-        slideInDown(currentActiveSlideElem);
+    
+    function slowGlideBackgroundInFromBottom (elem) {
+        return TweenMax.from(
+            elem,
+            DURATIONS.slideInOrOut,
+            {y: '-30%', ease: EASINGS.slideInOrOut, clearProps: 'all'}
+        );        
     }
     
     
     
+    function slowGlideBackgroundDownAndOut (elem) {
+        return TweenMax.to(
+            elem,
+            DURATIONS.slideInOrOut,
+            { y: '-30%', ease: EASINGS.slideInOrOut }
+        );
+    }
     
+    function slowGlideBackgroundInFromTop (elem) {
+        return TweenMax.from(
+            elem,
+            DURATIONS.slideInOrOut,
+            { y: '30%', ease: EASINGS.slideInOrOut }
+        );
+    }
+    
+    function enableSlideAnimation () {
+        isSlideAnimating = false;
+    }
+    
+    function animateToLowerSlide(prevSlideElem, newSlideElem) { 
+        
+        console.log('Animating to lower slide');
+        
+        downWardTL = new TimelineMax({ onComplete: enableSlideAnimation });
+        
+        downWardTL.add(slideOutUp(prevSlideElem), '0');
+        downWardTL.add(slideInFromBottom(newSlideElem), '0');
+        downWardTL.add(slowGlideBackgroundUpAndOut(animatedSlideComponents.backgroundFrom), '0');
+        downWardTL.add(slowGlideBackgroundInFromBottom(animatedSlideComponents.backgroundTo), '0');
+        
+        downWardTL.from(
+            animatedSlideComponents.headingTo,
+            0.7,
+            {autoAlpha: 0, y: 40, ease: EASINGS.slideInOrOut},
+            '-=1'
+        );
+        
+        downWardTL.from(
+            animatedSlideComponents.descriptionTo,
+            0.7,
+            {autoAlpha: 0, y: 40, ease: EASINGS.slideInOrOut},
+            '-=0.6'
+        );
+    }
+    
+    function animateToHigherSlide (prevSlideElem, newSlideElem) {
+        
+        console.log('Animating to higher slide');
+        
+        upwardTL = new TimelineMax({ onComplete: enableSlideAnimation });
+        
+        // Make sure we're animating from the top
+        upwardTL.set(newSlideElem, {y: '-100%'});
+        
+        upwardTL.add(slideOutDown(prevSlideElem), '0');
+        upwardTL.add(slideInFromTop(newSlideElem), '0');
+        upwardTL.add(slowGlideBackgroundDownAndOut(animatedSlideComponents.backgroundFrom), '0');
+        upwardTL.add(slowGlideBackgroundInFromTop(animatedSlideComponents.backgroundTo), '0');
+        
+        upwardTL.from(
+            animatedSlideComponents.headingTo,
+            0.7,
+            {autoAlpha: 0, y: 40, ease: EASINGS.slideInOrOut},
+            '-=1'
+        );
+        
+        upwardTL.from(
+            animatedSlideComponents.descriptionTo,
+            0.7,
+            {autoAlpha: 0, y: 40, ease: EASINGS.slideInOrOut},
+            '-=0.6'
+        );
+    }
+                
     
     function performSlideSwitchingAnimations (prevActiveSlideElem, newActiveSlideElem) {
+        debugger;
+        
+
+        // Wire up references to the the individual slide components that we'll be animating
+        animatedSlideComponents.headingTo = newActiveSlideElem.querySelector(SELECTORS.slideHeading);
+        animatedSlideComponents.headingFrom = prevActiveSlideElem.querySelector(SELECTORS.slideHeading);
+
+        animatedSlideComponents.descriptionTo = newActiveSlideElem.querySelector(SELECTORS.slideDescription);
+        animatedSlideComponents.descriptionFrom = prevActiveSlideElem.querySelector(SELECTORS.slideDescription);
+
+        animatedSlideComponents.backgroundTo = newActiveSlideElem.querySelector(SELECTORS.slideBackground);
+        animatedSlideComponents.backgroundFrom = prevActiveSlideElem.querySelector(SELECTORS.slideBackground);
+
 
         isNewSlideLower(prevActiveSlideElem, newActiveSlideElem) ? 
-            animateToLowerSlide(prevActiveSlideElem, newActiveSlideElem) :
-            animateToHigherSlide(prevActiveSlideElem, newActiveSlideElem);
+            animateToLowerSlide(prevActiveSlideElem, newActiveSlideElem) :  
+            animateToHigherSlide(prevActiveSlideElem, newActiveSlideElem);   
+               
     }
 
     
@@ -214,10 +330,10 @@ var app = (function (exports) {
      * current active slide element, then finish by triggering the animation
      * to the new slide.
      */
-    function syncActiveTabWithSlides (newSlideElem) {
+    function syncActiveTabWithSlides (newSlideTabElem) {
         
         previousActiveSlideClass = currentActiveSlideClass;
-        currentActiveSlideClass = newSlideElem.getAttribute(ATTRIBUTES.slideIdClass);                
+        currentActiveSlideClass = newSlideTabElem.getAttribute(ATTRIBUTES.slideIdClass);                
         
         // Using the identifying class, find the element reference
         previousActiveSlideElem = currentActiveSlideElem;
@@ -242,12 +358,21 @@ var app = (function (exports) {
     }
     
     function init () {
+        
         wireUpEventListenters();  
         
         var activeSlideTabElem = slideTabSelectorLinks.item(0);
-        
+                
+        /* 
+         * Set initial class values and animate in the first slide
+         */        
+        currentActiveSlideElem = slideElems.item(0);
+        currentActiveSlideClass = currentActiveSlideElem.getAttribute(ATTRIBUTES.slideIdClass);
+                
         setActiveSlideTab(activeSlideTabElem);
-        syncActiveTabWithSlides(activeSlideTabElem);                
+        setTabSelectorActiveClass(null, currentActiveSlideClass); 
+        slideInFromBottom(currentActiveSlideElem);
+        setSlideActiveClass(currentActiveSlideElem);
     }
 
     return {
