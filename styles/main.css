@@ -1353,16 +1353,16 @@ body {
   opacity: 0; }
 
 .slide-01 .slide__background {
-  background-image: url("/assets/img/slide_01.jpg"); }
+  background-image: url("../../../assets/img/slide_01.jpg"); }
 
 .slide-02 .slide__background {
-  background-image: url("/assets/img/slide_02.jpg"); }
+  background-image: url("../../../assets/img/slide_02.jpg"); }
 
 .slide-03 .slide__background {
-  background-image: url("/assets/img/slide_03.jpg"); }
+  background-image: url("../../../assets/img/slide_03.jpg"); }
 
 .slide-04 .slide__background {
-  background-image: url("/assets/img/slide_04.jpg"); }
+  background-image: url("../../../assets/img/slide_04.jpg"); }
 
 .slide-01 .slide__title {
   color: #49415d; }

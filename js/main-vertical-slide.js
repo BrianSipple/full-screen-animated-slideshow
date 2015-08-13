@@ -138,8 +138,6 @@ var app = (function (exports) {
     }
     
     
-    
-    // TODO: See if these tweens aren't better off as from-to's
     function slideOutUp (slideElem) {        
         if (slideElem) {            
            return TweenMax.to(
@@ -160,7 +158,7 @@ var app = (function (exports) {
         }
     }
     
-    function slideInFromBottom (slideElem) {
+    function slideSlideIntoView (slideElem) {
         if (slideElem) {
             return TweenMax.to(
                 slideElem, 
@@ -169,23 +167,6 @@ var app = (function (exports) {
             );
         }
     }
-    
-    function slideInFromTop (slideElem) {        
-        if (slideElem) {            
-            return TweenMax.to(
-                slideElem, 
-                DURATIONS.slideInOrOut, 
-                { y: '0%', opacity: 1, ease: EASINGS.slideInOrOut }
-            );
-        }
-    }
-    
-
-    
-//    function updateBodySlideClass(prevClass, currentClass) {
-//        document.body.classList.remove(prevClass);
-//        document.body.classList.add(currentClass);
-//    }
         
                
     function isNewSlideLower (prevActiveSlide, currentActiveSlide) {
@@ -226,7 +207,6 @@ var app = (function (exports) {
     }
     
     
-    
     function slowGlideBackgroundDownAndOut (elem) {
         return TweenMax.to(
             elem,
@@ -254,7 +234,7 @@ var app = (function (exports) {
         downWardTL = new TimelineMax({ onComplete: enableSlideAnimation });
         
         downWardTL.add(slideOutUp(prevSlideElem), '0');
-        downWardTL.add(slideInFromBottom(newSlideElem), '0');
+        downWardTL.add(slideSlideIntoView(newSlideElem), '0');
         downWardTL.add(slowGlideBackgroundUpAndOut(animatedSlideComponents.backgroundFrom), '0');
         downWardTL.add(slowGlideBackgroundInFromBottom(animatedSlideComponents.backgroundTo), '0');
         
@@ -283,7 +263,7 @@ var app = (function (exports) {
         upwardTL.set(newSlideElem, {y: '-100%'});
         
         upwardTL.add(slideOutDown(prevSlideElem), '0');
-        upwardTL.add(slideInFromTop(newSlideElem), '0');
+        upwardTL.add(slideSlideIntoView(newSlideElem), '0');
         upwardTL.add(slowGlideBackgroundDownAndOut(animatedSlideComponents.backgroundFrom), '0');
         upwardTL.add(slowGlideBackgroundInFromTop(animatedSlideComponents.backgroundTo), '0');
         
@@ -371,7 +351,7 @@ var app = (function (exports) {
                 
         setActiveSlideTab(activeSlideTabElem);
         setTabSelectorActiveClass(null, currentActiveSlideClass); 
-        slideInFromBottom(currentActiveSlideElem);
+        slideSlideIntoView(currentActiveSlideElem);
         setSlideActiveClass(currentActiveSlideElem);
     }
 
